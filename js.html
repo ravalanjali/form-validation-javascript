@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form 2</title>
+    <style>
+        .error {
+    color: red;
+    font-size: 90%;
+    }
+        .main{
+            border: 2px solid black;
+            background-color: #ccc;
+
+        }
+        label i {
+    color: #999;
+    font-size: 80%;
+    }
+        label {
+    display: block;
+    margin-bottom: 5px
+    }
+        form {
+    width: 300px;
+    background: #fff;
+    padding: 15px 40px 40px;
+    border: 1px solid rgb(0, 0, 0);
+    margin: 50px auto 0;
+    border-radius: 5px;
+    }
+    .form-inline {
+    border: 1px solid #ccc;
+    padding: 8px 10px 4px;
+    border-radius: 2px;
+    }
+    .form-inline label, .form-inline input {
+    display: inline-block;
+    width: auto;
+    padding-right: 15px;
+    }
+    input[type="submit"] {
+    font-size: 110%;
+    font-weight: 100;
+    background: #006dcc;
+    border-color: #016BC1;
+    box-shadow: 0 3px 0 #0165b6;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    }
+    input[type="submit"]:hover {
+    background: #0165b6;
+    }
+    /* input, select {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 2px; */
+    /* } */
+    body {
+    font-size: 16px;
+    background: #f9f9f9;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    </style>
+</head>
+<body>
+    <script>
+        function printError(elemId,hintMsg){
+        document.getElementById(elemId).innerHTML=hintMsg;
+        }
+        function validateform(){
+            var name=document.contectform.name.value;
+            var email=document.contectform.email.value;
+            var tour=document.contectform.tour.value;
+            var date=document.contectform.date.value;
+            var number=document.contectform.number.value;
+            var coupen=document.contectform.coupen.value;
+            var condition=document.contectform.condition.value;
+            var nameErr=true;
+            if(name=="")
+            {
+                printError("nameErr","Please enter the name")
+            }
+            else
+            {
+                var regex=/^[a-zA-Z\s]+$/;
+                if(regex.test(name)===false)
+                {
+                    printError("nameErr","Please enter the valid name")
+                }
+                else{
+                    printError("nameErr","")
+                    nameErr=false;
+                }
+            }
+            var emailErr=true;
+            if(email=="")
+            {
+                printError("emailErr","Please enter the email")
+            }
+            else
+            {
+                var regex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(regex.test(email)===false)
+                {
+                    printError("emailErr","Please enter the valid email")
+                }
+                else{
+                    printError("emailErr","")
+                    emailErr=false;
+                }
+            }
+            var tourErr=true;
+            if(tour=="select")
+            {
+                printError("tourErr","Please enter the tour")
+            }
+            else{
+                printError("tourErr","")
+                tourErr=false;
+            }
+            var dateErr=true;
+            if(date=="")
+            {
+                printError("dateErr","Please enter the date")
+            }
+            else{
+                printError("dateErr","")
+                dateErr=false;
+            }
+            var numberErr=true;
+            if(number=="")
+            {
+                printError("numberErr","Please enter the number")
+            }
+            else{
+                printError("numberErr","")
+                numberErr=false;
+            }
+            // var coupenErr=true;
+            // if(coupen=="")
+            // {
+            //     printError("coupenErr","please enter the coupen")
+            // }
+            // else{
+            //     printError("coupenErr","")
+            //     coupenErr=false;
+            // }
+            var conditionErr=true;
+            if(condition=="")
+            {
+                printError("conditionErr","Please enter the condition")
+            }
+            else{
+                printError("conditionErr","")
+                conditionErr=false;
+            }
+            var checkboxErr=true;
+            if(checkbox=="")
+            {
+                printError("checkboxErr","Please enter the checkbox")
+            }
+            else{
+                printError("checkboxErr","")
+                checkboxErr=false;
+            }
+            if ((nameErr || emailErr || tourErr || dateErr || numberErr || conditionErr || checkboxErr) == true)
+            {
+                return false;
+            }
+            else
+            {
+                console.log("ok");
+                var dataPreview = "You have Entered the foolwing details: \n"+
+               "Full Name: " + name + "\n" +
+               "Email :"+ email + "\n" +
+               "Your Tour Pakage:" + tour + "\n" +
+               "Your Arrival Date: " + date + "\n" + 
+               "Number of Pesons:" + number + "\n" +
+               "your Coupoun code is: "+ coupen + "\n";
+               
+               alert(dataPreview);
+
+            }
+        }
+
+    </script>
+    <center>
+            <div class="main">
+<div class="form">
+    <table>        
+        <tr>
+            <td><h1>Travel Reservation Form</h1></td>
+        </tr>
+        <tr>
+            <td><h3>*Denotes Mandotory</h3><br></td>
+        </tr>
+        <form name="contectform" action="#" method="post" onsubmit="validateform()">
+           <tr>
+            <td> <label>Full Name*:</label></td>
+           </tr>
+            <tr>
+                <td><input type="text" id="name" name="name" placeholder="Firstname_Lastname"><div class="error" id="nameErr"></div><br></td>
+                <td> <div class="error" id="nameErr"></div></td>
+            </tr>
+       
+       <tr>
+        <td> <label>Email Address*:</label></td>
+       </tr>
+        <tr>
+            <td><input type="text" id="email" name="email" placeholder="Email_Address"></td>
+        </tr><tr>    <td> <div class="error" id="emailErr"></div><br></td>
+        </tr>
+        <tr>
+            <td><label>Select Tour Package*:</label></td>
+        </tr>
+        <tr>
+            <td><select name="tour" id="tour">
+                <option value="select">Select</option>
+                <option>Goa</option>
+                <option>Ladakh</option>
+                <option>Delhi</option>
+                <option>Telengana</option>
+            </select></td></tr>
+           <tr> <td><div class="error" id="tourErr"></div><br></td>
+        </tr>
+       <tr>
+        <td> <label>arrival date*:</label></td>
+       </tr>
+      <tr>
+        <td>  <input type="date" id="date" name="date"><div class="error" id="dateErr"></div><br></td>
+        <td> <div class="error" id="dateErr"></div></td>
+      </tr>
+       <tr>
+        <td> <label>Number Of Person*:</label></td>
+       </tr>
+        <tr>
+            <td><input type="number" id="number" name="number" placeholder="UNKNOWN_TYPE"></td>
+        </tr> <tr>  <td> <div class="error" id="numberErr"></div><br></td>
+        </tr>
+       <tr>
+        <td> <label id="checkbox" name="checkbox">What Would you want to avail?*</label><br></td>
+       </tr>
+       <tr>
+        <td> Boarding<input type="checkbox" name="avail[]" id="checkbox"><br>
+            fooding<input type="checkbox" name="avail[]" id="checkbox"><br>
+            sight scoring<input type="checkbox" name="avail[]" id="checkbox"></td>
+       </tr>
+       <tr>
+        <td> <div class="error" id="checkboxErr"></div><br><br></td>
+       </tr>
+        <tr>
+            <td><label>discount coupen code:</label></td>
+        </tr>
+        <tr>
+            <td><input type="number" id="coupen" name="coupen" placeholder="UNKNOWN_TYPE"><div class="error" id="coupenErr"></div><br></td>
+        </tr>
+       <tr>
+        <td> <div class="error" id="coupenErr"></div></td>
+       </tr>
+       <tr>
+        <td> <label id="condition" name="condition">Terms and conditions*</label></td>
+       </tr>
+        <tr>
+            <td><input type="radio" name="condition" id="agree">I agree
+            <input type="radio" name="condition" id="notagree">I disagree<br></td>
+        </tr>
+       <tr>
+        <td> <div class="error" id="conditionErr"></div><br></td>
+       </tr>
+      <tr>
+        <td>
+            <input type="button" value="Complete Reservation" onclick="validateform()">
+        </td>
+      </tr>
+    </form>
+</table>
+</div>
+</div>
+</center>
+
+</body>
+</html>
